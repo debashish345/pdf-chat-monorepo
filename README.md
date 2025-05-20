@@ -61,18 +61,3 @@ TBD
 ## 🙌 Contributions
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## ✉️ Contact
-
-For questions or feedback, please reach out at [your-email@example.com](mailto:your-email@example.com)
-
----
-
-## 🙏 Acknowledgements
-
-* Google Cloud Vertex AI
-* pgvector
-* Amazon S3
-* Spring Boot & Angular communities
