@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: embedding-app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: dev-ai-458810
+          location: us-central1
+          transport: REST
+          credentials-uri: 'classpath:application_default_credentials.json'
+    ollama:
+      base-url: http://localhost:11434
+      embedding:
+        model: all-minilm:l6-v2
+      chat:
+        model: llama3.2:3b
+
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 384
+        table-name: pdf_vec

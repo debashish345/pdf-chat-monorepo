@@ -1,0 +1,25 @@
+package com.deva.chat.embedding.util;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.reader.ExtractedTextFormatter;
+import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
+import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+@Slf4j
+@Component
+public class PdfUtil {
+
+    public List<Document> extractPdf(MultipartFile file) throws Exception {
+        ParagraphPdfDocumentReader pdfReader = new ParagraphPdfDocumentReader(file.getResource(),
+                PdfDocumentReaderConfig.builder()
+                        .withPagesPerDocument(1)
+                        .build());
+
+        return pdfReader.read();
+    }
+}

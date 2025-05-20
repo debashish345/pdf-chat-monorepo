@@ -1,0 +1,33 @@
+<div class="p-6 flex flex-row space-x-2">
+    <div class="w-[30vw] h-[85vh] pb-5 bg-amber-50 rounded-md flex flex-col justify-between">
+        <div>
+            <h3>Selected File(s)</h3>
+            @if (selectedFile) {
+                <div class="flex flex-row justify-around space-x-2">
+                    <p class="w-[70%] truncate">{{ selectedFile.name }}</p>
+                    <p>{{ selectedFile.size / 1024 | number: '1.0-2' }} MB</p>
+                    <button (click)="uploadFileWithPresignedUrl()" class="p-1.5 rounded-md bg-amber-400 hover:bg-amber-500 hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer">Upload</button>
+                    @if (uploadError || uploadResult?.success) {
+                        <span class="text-green-500 text-sm">{{uploadResult?.message}}</span>
+                        <span class="text-red-500 text-sm">Error: {{ uploadError }}</span>
+                    }
+                </div>
+            }
+        </div>
+        <div class="flex flex-row space-x-2 justify-center items-center self-center h-16 w-[70%] px-6 rounded-lg bg-amber-400 cursor-pointer hover:bg-amber-500 hover:scale-105 transition-transform duration-200 ease-in-out"
+        (click)="triggerFileInput()" 
+        >
+            <span class="font-semibold">Upload PDF here</span>
+            <span class="material-symbols-outlined">upload_file</span>
+        </div>
+
+        <input
+            type="file"
+            #fileInput
+            class="hidden"
+            accept=".pdf"
+            (change)="onFileSelected($event)"
+        >
+    </div>
+    <div class="w-[70vw] h-[85vh] bg-amber-100 rounded-md">2</div>
+</div>

@@ -1,0 +1,11 @@
+<div>
+    @if (!clerkService.clerk?.isSignedIn) {
+        <div style="margin: auto; padding-top: 10%;" #signInContainer></div>
+    } @else {
+        <div class="h-16 px-6 flex flex-row justify-between items-center">
+            <div class="w-fit">Reserved for future use</div>
+            <div #userButtonContainer></div>
+        </div>
+        <router-outlet />
+    }
+</div>
